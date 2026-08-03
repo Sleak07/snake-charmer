@@ -4,21 +4,32 @@ import math
 
 
 class Shape:
-    def __init__(self, area: float) -> None:
-        self.area: float = area
+    def __init__(self, color: int, is_boundary: bool) -> None:
+        self.color: int = color
+        self.is_boundary: bool = is_boundary
+
+    def describe(self):
+        print(f" It is {self.color} ")
 
 
 class Circle(Shape):
-    # Circle inherits from Shape
-    def __init__(self, radius: float) -> None:
-        self.radius: float = radius
-        area: float = self.calculate_area()
-        super().__init__(area)
+    def __init__(self, radius: int, color: int, is_boundary: bool) -> None:
+        super().__init__(color, is_boundary)
+        self.radius: int = radius
 
-    def calculate_area(self):
-        return math.pi * self.radius**2
+    def area_of_circle(self):
+        super().describe()
+        return math.pi * self.radius * 2
 
 
-if __name__ == "__main__":
-    cro = Circle(5.7)
-    print(cro.calculate_area())
+class Square(Shape):
+    def __init__(self, color: int, is_boundary: bool, width: int) -> None:
+        super().__init__(color, is_boundary)
+        self.width: int = width
+
+
+circle = Circle(radius=5, color=23, is_boundary=True)
+print(circle.color)
+print(circle.radius)
+print(circle.is_boundary)
+print(circle.area_of_circle())
